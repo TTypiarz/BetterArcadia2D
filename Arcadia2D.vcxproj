@@ -24,6 +24,7 @@
     <ProjectGuid>{d59150af-826e-4ac5-bf7e-ac1579ef2e16}</ProjectGuid>
     <RootNamespace>Arcadia2D</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>VT-Arcadia2D</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

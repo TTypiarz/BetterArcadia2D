@@ -9,12 +9,14 @@ TextureManager* TextureManager::m_instance = nullptr;
 void TextureManager::Load(std::string id, std::string filename)
 {
 	SDL_Surface* surface = IMG_Load(filename.c_str());
-	if (surface == nullptr) {
+	if (surface == nullptr) 
+	{
 		SDL_Log("Failed to Load Image ", filename.c_str(), "Error: ", SDL_GetError());
 	}
 
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(ac_engine::GetInstance()->GetRenderer(), surface);
-	if (!texture) {
+	if (!texture) 
+	{
 		SDL_Log("Failed to Create Texture From ", filename.c_str(), "Error: ", SDL_GetError());
 	}
 
@@ -31,7 +33,9 @@ void TextureManager::Drop(std::string id)
 void TextureManager::Clean()
 {
 	std::map<std::string, SDL_Texture*>::iterator it;
-	for (it = m_TextureMap.begin(); it != m_TextureMap.end(); it++) {
+
+	for (it = m_TextureMap.begin(); it != m_TextureMap.end(); it++) 
+	{
 		SDL_DestroyTexture(it->second);
 	}
 
@@ -44,8 +48,7 @@ void TextureManager::Draw(std::string id, int x, int y, int width, int height, S
 {
 	SDL_Rect srcRect = { 0, 0, width, height };
 	SDL_Rect datRect = { x, y, width, height };
-
-	SDL_RenderCopyEx(ac_engine::GetInstance()->GetRenderer(), m_TextureMap[id], &srcRect, &datRect, 0, nullptr,
-		flip);
-
+	
+	auto rendered = ac_engine::GetInstance()->GetRenderer();
+	SDL_RenderCopyEx(rendered, m_TextureMap[id], &srcRect, &datRect, 0, nullptr, flip);
 }

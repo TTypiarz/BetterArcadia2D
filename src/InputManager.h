@@ -8,16 +8,19 @@ struct Key {
 class InputManager
 {
 public:
-	static InputManager* GetInstance() { return m_instance = (m_instance != nullptr) ? m_instance : new InputManager(); }
+	static InputManager* GetInstance() 
+	{ 
+		return m_instance = (m_instance != nullptr) ? m_instance : new InputManager(); 
+	}
+	
 	void Listen();
-	bool GetKeyDown(SDL_Scancode key);
+	bool KeyIsDown(SDL_Scancode key);
 
 
 
 private:
 	InputManager();
-	void KeyUp();
-	void KeyDown();
+	void KeyUpdate();
 	const Uint8* m_KeyStates;
 	static InputManager* m_instance;
 };

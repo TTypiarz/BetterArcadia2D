@@ -5,7 +5,7 @@
 class Character : public Actor {
 
 public:
-	Character(Properties props): Actor(props) {}
+	Character(Properties props) : Actor(props) { }
 
 	virtual void Draw() = 0;
 	virtual void Clean() = 0;

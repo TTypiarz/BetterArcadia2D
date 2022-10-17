@@ -6,7 +6,10 @@
 class TextureManager
 {
 public:
-	static TextureManager* GetInstance() { return m_instance = (m_instance != nullptr) ? m_instance : new TextureManager(); }
+	static TextureManager* GetInstance()
+	{
+		return m_instance = (m_instance != nullptr) ? m_instance : new TextureManager();
+	}
 
 	void Load(std::string id, std::string filename);
 	void Drop(std::string id);
@@ -19,7 +22,7 @@ public:
 
 
 private:
-	TextureManager() {};
+	TextureManager() { };
 	std::map<std::string, SDL_Texture*> m_TextureMap;
 	static TextureManager* m_instance;
 };

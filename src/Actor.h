@@ -6,6 +6,15 @@
 struct Properties {
 
 public:
+	/// <summary>
+	/// Create a new poperty to store datas about the game object
+	/// </summary>
+	/// <param name="textureID">The id which refers to the text</param>
+	/// <param name="x">Coordinates in X of the game object</param>
+	/// <param name="y">Coordinates in Y of the game object</param>
+	/// <param name="width">The width of the game object</param>
+	/// <param name="height">The width of the game boject</param>
+	/// <param name="flip">If the object is flip or not</param>
 	Properties(std::string textureID, int x, int y, int width, int height, SDL_RendererFlip flip = SDL_FLIP_NONE) {
 		X = x;
 	    Y = y;
@@ -14,8 +23,6 @@ public:
 		Height = height;
 		TextureID = textureID;
 	}
-
-
 
 
 public:
@@ -29,10 +36,17 @@ public:
 class Actor : public IActor
 {
 public:
-	Actor(Properties* props) m_TextureID(props->TextureID),
-	m_Width(props->Width), m_Height(props->Height), m_Flip(props->Flip) {
-	    
-		m_transform = new Transform(props->X, props->Y);
+	/// <summary>
+	///  For create a new Actor
+	/// </summary>
+	/// <param name="prop">The property of the actors</param>
+	Actor(Properties prop)//@Creater Why use pointer if it was for only one value (or it can be at mutliple place in same time ??), and why use orther arg if all of it was in the porp ???
+	{
+		m_transform = new Transform(prop.X, prop.Y);
+		m_Flip = prop.Flip;
+		m_TextureID = prop.TextureID;
+		m_Height = prop.Height;
+		m_Width = prop.Width;
 	}
 
 	virtual void Draw() = 0;

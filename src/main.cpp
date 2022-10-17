@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 	while (engine->i_isRunning()) {
 		engine->Events();
 		engine->Update();
-		engine->Render();
+		engine->Render();//TODO?: Add FPS counter
 	}
 
 	engine->Clean();
